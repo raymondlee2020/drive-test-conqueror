@@ -19,10 +19,13 @@ from django.conf.urls import url
 from django.views.static import serve
 from core.views import IndexTemplateView
 from dtc_server.settings import MEDIA_ROOT
+import os
+
+DIST_DIR = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'dtc_vue/dist')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     # Get builded files by django.views.static
-    url(r'^media/(?P<path>.*)$', serve, {"document_root": MEDIA_ROOT}),
+    url(r'^media/(?P<path>.*)$', serve, {"document_root": DIST_DIR}),
     re_path(r"^.*$", IndexTemplateView.as_view(), name="entry-point"),
 ]

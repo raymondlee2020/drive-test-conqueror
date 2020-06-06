@@ -136,7 +136,7 @@ WEBPACK_LOADER = {
     }
 }
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'dtc_vue/dist')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 
 import mimetypes
