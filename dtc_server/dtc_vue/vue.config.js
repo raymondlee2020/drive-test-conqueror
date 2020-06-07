@@ -5,7 +5,7 @@ module.exports = {
   // dev publicPath
   // publicPath: "http://localhost:8080",
   // production publicPath
-  publicPath: "http://localhost:8000/media",
+  publicPath: "https://drive-test-conqueror.herokuapp.com/media",
   outputDir: "./dist/",
 
   chainWebpack: (config) => {
