@@ -1,32 +1,85 @@
 <template>
   <div id="app">
-    <!-- <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>-->
+    <MenuBar />
+    <div class="cover-img">
+      <div class="slogan-container">
+        <span class="slogan main">Driving test is not as difficult as you think</span>
+        <span
+          class="slogan sub"
+        >With our quiz database, practice test, sign recognition, it will never be a problem.</span>
+      </div>
+    </div>
     <router-view />
   </div>
 </template>
 
-<style>
+<script>
+import MenuBar from "@/components/MenuBar.vue";
+
+export default {
+  name: "App",
+  components: {
+    MenuBar
+  }
+};
+</script>
+
+<style lang="scss" scoped>
+@import "./assets/font";
+@import "./assets/color";
+
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: "Lora", Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+  .cover-img {
+    width: 100%;
+    height: 670px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-image: url("./assets/cover.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    .slogan-container {
+      width: 100%;
+      height: 100%;
+      max-width: 1200px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+      padding: 0 18px;
+      box-sizing: border-box;
+      .slogan {
+        width: 100%;
+        max-width: 740px;
+        color: $light-blue;
+      }
+      .main {
+        font-size: $pc-xl;
+      }
+      .sub {
+        font-size: $pc-md;
+        margin: 24px 0;
+      }
+    }
+  }
 }
 
-#nav {
-  padding: 30px;
+@media screen and (max-width: 1024px) {
+  #app {
+    .cover-img {
+      background-position: center;
+    }
+  }
 }
 
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
+@media screen and (max-width: 600px) {
+  #app {
+    .cover-img {
+      background-position-x: -620px;
+    }
+  }
 }
 </style>

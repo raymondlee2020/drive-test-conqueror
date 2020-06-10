@@ -84,7 +84,7 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 @import "../assets/font";
 @import "../assets/color";
 
@@ -102,7 +102,7 @@ export default {
       font-weight: bold;
       letter-spacing: 1px;
       flex-direction: column;
-      padding: 12px 0;
+      padding: 18px 0;
       .logo-main {
         display: flex;
         align-items: flex-end;
