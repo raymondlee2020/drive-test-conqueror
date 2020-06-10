@@ -22,19 +22,43 @@
             active-text-color="#92ACBD"
             class="pc-menu"
           >
-            <el-menu-item index="1">Home</el-menu-item>
-            <el-menu-item index="2">Quiz Database</el-menu-item>
-            <el-menu-item index="3">Practice Test</el-menu-item>
-            <el-menu-item index="4">Sign Recognition</el-menu-item>
+            <el-menu-item index="1">
+              <router-link to="/">Home</router-link>
+            </el-menu-item>
+            <el-menu-item index="2">
+              <router-link to="/">Quiz Database</router-link>
+            </el-menu-item>
+            <el-menu-item index="3">
+              <router-link to="/">Practice Test</router-link>
+            </el-menu-item>
+            <el-menu-item index="4">
+              <router-link to="/">Sign Recognition</router-link>
+            </el-menu-item>
           </el-menu>
           <el-button type="text" class="mb-menu" @click="drawer = true">
             <i class="fa fa-bars icon-size" aria-hidden="true" />
           </el-button>
           <el-drawer :visible.sync="drawer" :with-header="false" size="240px">
-            <router-link :class="activeIndex=='1'?'active link':'link'" to="/">Home</router-link>
-            <router-link :class="activeIndex=='2'?'active link':'link'" to="/">Quiz Database</router-link>
-            <router-link :class="activeIndex=='3'?'active link':'link'" to="/">Practice Test</router-link>
-            <router-link :class="activeIndex=='4'?'active link':'link'" to="/">Sign Recognition</router-link>
+            <router-link
+              :class="activeIndex=='1'?'active link':'link'"
+              to="/"
+              @click.native="()=>handleSelect('1')"
+            >Home</router-link>
+            <router-link
+              :class="activeIndex=='2'?'active link':'link'"
+              to="/"
+              @click.native="()=>handleSelect('2')"
+            >Quiz Database</router-link>
+            <router-link
+              :class="activeIndex=='3'?'active link':'link'"
+              to="/"
+              @click.native="()=>handleSelect('3')"
+            >Practice Test</router-link>
+            <router-link
+              :class="activeIndex=='4'?'active link':'link'"
+              to="/"
+              @click.native="()=>handleSelect('4')"
+            >Sign Recognition</router-link>
           </el-drawer>
         </el-main>
       </el-container>
@@ -53,7 +77,9 @@ export default {
     };
   },
   methods: {
-    handleSelect: function() {}
+    handleSelect: function(index) {
+      this.activeIndex = index;
+    }
   }
 };
 </script>
@@ -134,14 +160,16 @@ export default {
       display: flex;
       flex-direction: column;
       align-items: center;
-      .link {
-        color: $black;
-        padding: 12px 0;
-        text-decoration: none;
-      }
-      .active {
-        color: $dark-blue;
-      }
+    }
+    a {
+      text-decoration: none;
+    }
+    .link {
+      color: $black;
+      padding: 12px 0;
+    }
+    .active {
+      color: $dark-blue;
     }
   }
 }
