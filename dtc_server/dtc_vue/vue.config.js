@@ -3,9 +3,9 @@ const BundleTracker = require("webpack-bundle-tracker");
 module.exports = {
   // on Windows you might want to set publicPath: "http://127.0.0.1:8080/"
   // dev publicPath
-  // publicPath: "http://localhost:8080",
+  publicPath: "http://localhost:8080",
   // production publicPath
-  publicPath: "https://drive-test-conqueror.herokuapp.com/media",
+  // publicPath: "https://drive-test-conqueror.herokuapp.com/media",
   outputDir: "./dist/",
 
   chainWebpack: (config) => {
@@ -32,10 +32,10 @@ module.exports = {
   },
 
   //   uncomment before executing 'npm run build'
-  css: {
-    extract: {
-      filename: 'bundle.css',
-      chunkFilename: 'bundle.css',
-    },
-  }
+  // css: {
+  //   extract: {
+  //     filename: 'bundle.css',
+  //     chunkFilename: 'bundle.css',
+  //   },
+  // }
 };
