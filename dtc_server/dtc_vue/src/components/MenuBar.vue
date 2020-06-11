@@ -156,11 +156,6 @@ export default {
     .icon-size {
       font-size: 30px;
     }
-    .el-drawer__body {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
     a {
       text-decoration: none;
     }
@@ -183,6 +178,18 @@ export default {
       .mb-menu {
         display: block;
       }
+    }
+  }
+}
+</style>
+
+<style lang="scss">
+.menu-bar-root {
+  .menu-bar-wrap {
+    .el-drawer__body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
   }
 }

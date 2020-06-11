@@ -5,6 +5,7 @@ module.exports = {
   // dev publicPath
   publicPath: "http://localhost:8080",
   // production publicPath
+  // publicPath: "https://c24422daf33f.ngrok.io/media",
   // publicPath: "https://drive-test-conqueror.herokuapp.com/media",
   outputDir: "./dist/",
 

@@ -78,7 +78,12 @@ export default {
 @media screen and (max-width: 600px) {
   #app {
     .cover-img {
-      background-position-x: -620px;
+      background-position: 68%;
+      .slogan-container {
+        .main {
+          font-size: $mb-xl;
+        }
+      }
     }
   }
 }
