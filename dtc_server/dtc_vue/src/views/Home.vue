@@ -1,8 +1,9 @@
 <template>
   <div class="home-root">
-    <span class="title">Amazing Services</span>
-    <div class="divide" />
-    <span class="des">Use these amazing services to beat the driving test.</span>
+    <PageTitle
+      title="Amazing Services"
+      description="Use these amazing services to beat the driving test."
+    />
     <div class="home-wrap">
       <ServiceCard
         imgPath="database.jpg"
@@ -28,11 +29,13 @@
 
 <script>
 import ServiceCard from "@/components/ServiceCard";
+import PageTitle from "@/components/PageTitle";
 
 export default {
   name: "Home",
   components: {
-    ServiceCard
+    ServiceCard,
+    PageTitle
   }
 };
 </script>
@@ -50,29 +53,12 @@ export default {
   margin: 60px 0;
   padding: 0 18px;
   box-sizing: border-box;
-  .title {
-    font-size: $pc-xl;
-    font-weight: bold;
-    color: $black;
-  }
-  .divide {
-    width: 60px;
-    height: 2px;
-    background-color: $dark-blue;
-    margin: 12px 0 6px;
-  }
-  .des {
-    font-size: $pc-sm;
-    color: $gray;
-    text-align: center;
-  }
   .home-wrap {
     width: 100%;
     max-width: 1200px;
     display: flex;
     align-items: center;
     justify-content: space-around;
-    margin-top: 36px;
   }
 }
 
