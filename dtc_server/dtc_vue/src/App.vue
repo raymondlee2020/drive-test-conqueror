@@ -57,7 +57,7 @@ export default {
         color: $light-blue;
       }
       .main {
-        font-size: $pc-xl;
+        font-size: $pc-2l;
       }
       .sub {
         font-size: $pc-md;
