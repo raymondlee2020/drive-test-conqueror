@@ -26,13 +26,13 @@
               <router-link to="/">Home</router-link>
             </el-menu-item>
             <el-menu-item index="2">
-              <router-link to="/">Quiz Database</router-link>
+              <router-link to="/quiz">Quiz Database</router-link>
             </el-menu-item>
             <el-menu-item index="3">
-              <router-link to="/">Practice Test</router-link>
+              <router-link to="/practice">Practice Test</router-link>
             </el-menu-item>
             <el-menu-item index="4">
-              <router-link to="/">Sign Recognition</router-link>
+              <router-link to="/sign">Sign Recognition</router-link>
             </el-menu-item>
           </el-menu>
           <el-button type="text" class="mb-menu" @click="drawer = true">
@@ -46,17 +46,17 @@
             >Home</router-link>
             <router-link
               :class="activeIndex=='2'?'active link':'link'"
-              to="/"
+              to="/quiz"
               @click.native="()=>handleSelect('2')"
             >Quiz Database</router-link>
             <router-link
               :class="activeIndex=='3'?'active link':'link'"
-              to="/"
+              to="/practice"
               @click.native="()=>handleSelect('3')"
             >Practice Test</router-link>
             <router-link
               :class="activeIndex=='4'?'active link':'link'"
-              to="/"
+              to="/sign"
               @click.native="()=>handleSelect('4')"
             >Sign Recognition</router-link>
           </el-drawer>
