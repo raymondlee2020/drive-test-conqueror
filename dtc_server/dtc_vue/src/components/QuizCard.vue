@@ -30,7 +30,7 @@ export default {
   max-width: 1200px;
   display: flex;
   justify-content: flex-start;
-  margin-bottom: 10px;
+  margin-bottom: 18px;
   .text-container {
     flex: 1;
     display: flex;

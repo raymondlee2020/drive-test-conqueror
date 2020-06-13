@@ -19,7 +19,7 @@
     </div>
     <div class="quizs" v-if="quizType === 1">
       <QuizCard
-        v-for="(item, index) in MultipleChoice"
+        v-for="(item, index) in multipleChoice"
         :key="index"
         :quiz="item.quiz"
         :options="item.options"
@@ -46,15 +46,15 @@ export default {
         {
           quiz: "1. 題目一內容",
           options: ["(1) 選項一", "(2) 選項二", "(3) 選項三"],
-          answer: 1
+          answer: "1"
         },
         {
           quiz: "2. 題目二內容",
           options: ["(1) 選項一", "(2) 選項二", "(3) 選項三"],
-          answer: 1
+          answer: "1"
         }
       ],
-      MultipleChoice: [
+      multipleChoice: [
         {
           quiz: "1. 題目一內容",
           options: ["(O)", "(X)"],
