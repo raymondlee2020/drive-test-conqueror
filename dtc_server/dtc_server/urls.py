@@ -19,12 +19,19 @@ from django.conf.urls import url
 from django.views.static import serve
 from core.views import IndexTemplateView
 from dtc_server.settings import MEDIA_ROOT
+from rest_framework import routers
+from restapi import views
 import os
 
 DIST_DIR = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'dtc_vue/dist')
 
+router = routers.DefaultRouter()
+router.register(r'ruletruefalse', views.RuleTrueFalseViewSet)
+router.register(r'rulemultiplechoice', views.RuleMultipleChoiceViewSet)
+
 urlpatterns = [
     path('admin', admin.site.urls),
+    path('api/', include(router.urls)),
     # Get builded files by django.views.static
     url(r'^media/(?P<path>.*)$', serve, {"document_root": DIST_DIR}),
     re_path(r"^.*$", IndexTemplateView.as_view(), name="entry-point"),
