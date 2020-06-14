@@ -4,7 +4,7 @@
       title="Quiz Database"
       description="Study on the quiz getting from official website."
     />
-    <el-radio-group v-model="quizType">
+    <el-radio-group class="radio-group" v-model="quizType">
       <el-radio-button :label="0">是非題</el-radio-button>
       <el-radio-button :label="1">選擇題</el-radio-button>
     </el-radio-group>
@@ -43,30 +43,8 @@ export default {
   data: function() {
     return {
       quizType: 0,
-      trueFalse: [
-        {
-          quiz: "1. 題目一內容",
-          options: ["(1) 選項一", "(2) 選項二", "(3) 選項三"],
-          answer: "1"
-        },
-        {
-          quiz: "2. 題目二內容",
-          options: ["(1) 選項一", "(2) 選項二", "(3) 選項三"],
-          answer: "1"
-        }
-      ],
-      multipleChoice: [
-        {
-          quiz: "1. 題目一內容",
-          options: ["(O)", "(X)"],
-          answer: "O"
-        },
-        {
-          quiz: "2. 題目二內容",
-          options: ["(O)", "(X)"],
-          answer: "O"
-        }
-      ]
+      trueFalse: [],
+      multipleChoice: []
     };
   },
   mounted: async function() {
@@ -113,6 +91,12 @@ export default {
     flex-direction: column;
     align-items: center;
     margin-top: 18px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .radio-group {
+    display: inline-block;
   }
 }
 </style>

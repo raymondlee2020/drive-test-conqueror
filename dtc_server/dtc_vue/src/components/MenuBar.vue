@@ -22,16 +22,16 @@
             active-text-color="#92ACBD"
             class="pc-menu"
           >
-            <el-menu-item index="1">
+            <el-menu-item index="1" @click.native="()=>$router.push('/')">
               <router-link to="/">Home</router-link>
             </el-menu-item>
-            <el-menu-item index="2">
+            <el-menu-item index="2" @click.native="()=>$router.push('/quiz')">
               <router-link to="/quiz">Quiz Database</router-link>
             </el-menu-item>
-            <el-menu-item index="3">
+            <el-menu-item index="3" @click.native="()=>$router.push('/practice')">
               <router-link to="/practice">Practice Test</router-link>
             </el-menu-item>
-            <el-menu-item index="4">
+            <el-menu-item index="4" @click.native="()=>$router.push('/sign')">
               <router-link to="/sign">Sign Recognition</router-link>
             </el-menu-item>
           </el-menu>
