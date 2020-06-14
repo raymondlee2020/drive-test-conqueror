@@ -106,6 +106,7 @@ export default {
 .el-radio__label {
   font-size: $pc-md;
   margin-right: 16px;
+  white-space: pre-wrap;
 }
 .el-radio__input.is-checked + .el-radio__label {
   color: $dark-blue;

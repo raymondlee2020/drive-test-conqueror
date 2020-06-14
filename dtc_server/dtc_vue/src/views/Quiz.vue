@@ -51,7 +51,7 @@ export default {
     const trueFalseRawData = await Get("ruletruefalse");
     const multipleChoiceRawData = await Get("rulemultiplechoice");
     this.trueFalse = trueFalseRawData.data
-      .sort((a, b) => a - b)
+      .sort((a, b) => a.quizId - b.quizId)
       .map(item => {
         return {
           quiz: `${item.quizId}. ${item.quiz}`,
@@ -60,7 +60,7 @@ export default {
         };
       });
     this.multipleChoice = multipleChoiceRawData.data
-      .sort((a, b) => a - b)
+      .sort((a, b) => a.quizId - b.quizId)
       .map(item => {
         return {
           quiz: `${item.quizId}. ${item.quiz}`,

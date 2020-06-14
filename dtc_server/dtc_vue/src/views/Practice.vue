@@ -15,12 +15,16 @@
       <el-button v-if="testing" class="submit-button" @click="submitAns">Submit</el-button>
       <el-button v-if="!testing" class="reset-button" @click="resetQuizs">Reset</el-button>
     </div>
+    <el-dialog title="Your Score" :visible.sync="dialogVisible" width="300px">
+      <div class="score">{{score}}</div>
+    </el-dialog>
   </div>
 </template>
 
 <script>
 import PageTitle from "@/components/PageTitle";
 import PracticeCard from "@/components/PracticeCard";
+import { Get } from "@/assets/utils";
 
 export default {
   name: "Practice",
@@ -30,41 +34,12 @@ export default {
   },
   data: function() {
     return {
-      quizs: [
-        {
-          quiz: "1. 題目一內容",
-          options: ["(1) 選項一", "(2) 選項二", "(3) 選項三"],
-          answer: "1",
-          ansIndex: 0,
-          choice: 0,
-          showAns: false
-        },
-        {
-          quiz: "2. 題目二內容",
-          options: ["(1) 選項一", "(2) 選項二", "(3) 選項三"],
-          answer: "1",
-          ansIndex: 0,
-          choice: 0,
-          showAns: false
-        },
-        {
-          quiz: "3. 題目三內容",
-          options: ["(O)", "(X)"],
-          answer: "O",
-          ansIndex: 0,
-          choice: 0,
-          showAns: false
-        },
-        {
-          quiz: "4. 題目四內容",
-          options: ["(O)", "(X)"],
-          answer: "O",
-          ansIndex: 0,
-          choice: 0,
-          showAns: false
-        }
-      ],
-      testing: true
+      dialogVisible: false,
+      trueFalse: [],
+      multipleChoice: [],
+      quizs: [],
+      testing: true,
+      score: 100
     };
   },
   methods: {
@@ -79,12 +54,101 @@ export default {
           score -= 2;
         }
       });
+      this.score = score;
       this.testing = false;
-      console.log(score);
+      this.dialogVisible = true;
     },
     resetQuizs: function() {
       this.testing = true;
+      this.shuffle(this.trueFalse);
+      this.shuffle(this.multipleChoice);
+      this.quizs = [];
+      if (this.trueFalse.length < 25) {
+        this.quizs = this.quizs.concat(
+          this.trueFalse.map((item, index) => {
+            return {
+              quiz: `${index + 1}. ${item.quiz}`,
+              options: item.options,
+              answer: item.answer,
+              ansIndex: item.ansIndex,
+              choice: 0,
+              showAns: false
+            };
+          })
+        );
+      } else {
+        this.quizs = this.quizs.concat(
+          this.trueFalse.slice(24).map((item, index) => {
+            return {
+              quiz: `${index + 1}. ${item.quiz}`,
+              options: item.options,
+              answer: item.answer,
+              ansIndex: item.ansIndex,
+              choice: 0,
+              showAns: false
+            };
+          })
+        );
+      }
+      if (this.multipleChoice.length < 25) {
+        this.quizs = this.quizs.concat(
+          this.multipleChoice.map((item, index) => {
+            return {
+              quiz: `${index + 26}. ${item.quiz}`,
+              options: item.options,
+              answer: item.answer,
+              ansIndex: item.ansIndex,
+              choice: 0,
+              showAns: false
+            };
+          })
+        );
+      } else {
+        this.quizs = this.quizs.concat(
+          this.multipleChoice.slice(24).map((item, index) => {
+            return {
+              quiz: `${index + 26}. ${item.quiz}`,
+              options: item.options,
+              answer: item.answer,
+              ansIndex: item.ansIndex,
+              choice: 0,
+              showAns: false
+            };
+          })
+        );
+      }
+    },
+    shuffle: function(array) {
+      for (let i = array.length - 1; i > 0; i--) {
+        let j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+      }
     }
+  },
+  mounted: async function() {
+    const trueFalseRawData = await Get("ruletruefalse");
+    const multipleChoiceRawData = await Get("rulemultiplechoice");
+    this.trueFalse = trueFalseRawData.data
+      .sort((a, b) => a.quizId - b.quizId)
+      .map(item => {
+        return {
+          quiz: item.quiz,
+          options: ["(O)", "(X)"],
+          answer: item.ansIndex === 0 ? "O" : "X",
+          ansIndex: item.ansIndex
+        };
+      });
+    this.multipleChoice = multipleChoiceRawData.data
+      .sort((a, b) => a.quizId - b.quizId)
+      .map(item => {
+        return {
+          quiz: item.quiz,
+          options: [item.option1, item.option2, item.option3],
+          answer: (item.ansIndex + 1).toString(),
+          ansIndex: item.ansIndex
+        };
+      });
+    this.resetQuizs();
   }
 };
 </script>
@@ -120,5 +184,22 @@ export default {
       background-color: rgba(192, 67, 101, 0.2);
     }
   }
+  .score {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    font-size: 80px;
+    font-weight: bold;
+  }
+}
+</style>
+
+<style lang="scss">
+@import "../assets/font";
+@import "../assets/color";
+
+.el-dialog__title {
+  font-size: $pc-lg;
+  font-weight: bold;
 }
 </style>
