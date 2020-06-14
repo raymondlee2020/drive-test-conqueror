@@ -32,6 +32,7 @@
 <script>
 import PageTitle from "@/components/PageTitle";
 import QuizCard from "@/components/QuizCard";
+import { Get } from "@/assets/utils";
 
 export default {
   name: "Quiz",
@@ -67,6 +68,28 @@ export default {
         }
       ]
     };
+  },
+  mounted: async function() {
+    const trueFalseRawData = await Get("ruletruefalse");
+    const multipleChoiceRawData = await Get("rulemultiplechoice");
+    this.trueFalse = trueFalseRawData.data
+      .sort((a, b) => a - b)
+      .map(item => {
+        return {
+          quiz: `${item.quizId}. ${item.quiz}`,
+          options: ["(O)", "(X)"],
+          answer: item.ansIndex === 0 ? "O" : "X"
+        };
+      });
+    this.multipleChoice = multipleChoiceRawData.data
+      .sort((a, b) => a - b)
+      .map(item => {
+        return {
+          quiz: `${item.quizId}. ${item.quiz}`,
+          options: [item.option1, item.option2, item.option3],
+          answer: (item.ansIndex + 1).toString()
+        };
+      });
   }
 };
 </script>
