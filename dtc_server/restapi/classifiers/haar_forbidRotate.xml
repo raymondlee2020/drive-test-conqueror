@@ -1,0 +1,94 @@
+<?xml version="1.0"?>
+<opencv_storage>
+<harr_forbidrotate type_id="opencv-haar-classifier">
+  <size>
+    50 50</size>
+  <stages>
+    <_>
+      <trees>
+        <_>
+          <_>
+            <feature>
+              <rects>
+                <_>
+                  0 0 33 12 -1.</_>
+                <_>
+                  0 3 33 6 2.</_></rects>
+              <tilted>0</tilted></feature>
+            <threshold>-0.0336818210780621</threshold>
+            <left_val>1.</left_val>
+            <right_val>-0.9999995231628418</right_val></_></_></trees>
+      <stage_threshold>1.</stage_threshold>
+      <parent>-1</parent>
+      <next>-1</next></_>
+    <_>
+      <trees>
+        <_>
+          <_>
+            <feature>
+              <rects>
+                <_>
+                  0 0 12 41 -1.</_>
+                <_>
+                  3 0 6 41 2.</_></rects>
+              <tilted>0</tilted></feature>
+            <threshold>-0.0421776808798313</threshold>
+            <left_val>1.</left_val>
+            <right_val>-0.9999998211860657</right_val></_></_></trees>
+      <stage_threshold>1.</stage_threshold>
+      <parent>0</parent>
+      <next>-1</next></_>
+    <_>
+      <trees>
+        <_>
+          <_>
+            <feature>
+              <rects>
+                <_>
+                  2 0 14 21 -1.</_>
+                <_>
+                  2 7 14 7 3.</_></rects>
+              <tilted>0</tilted></feature>
+            <threshold>-0.0474785007536411</threshold>
+            <left_val>1.</left_val>
+            <right_val>-0.9999995231628418</right_val></_></_></trees>
+      <stage_threshold>1.</stage_threshold>
+      <parent>1</parent>
+      <next>-1</next></_>
+    <_>
+      <trees>
+        <_>
+          <_>
+            <feature>
+              <rects>
+                <_>
+                  0 1 24 1 -1.</_>
+                <_>
+                  12 1 12 1 2.</_></rects>
+              <tilted>0</tilted></feature>
+            <threshold>-6.4779762178659439e-003</threshold>
+            <left_val>1.</left_val>
+            <right_val>-0.9999998211860657</right_val></_></_></trees>
+      <stage_threshold>1.</stage_threshold>
+      <parent>2</parent>
+      <next>-1</next></_>
+    <_>
+      <trees>
+        <_>
+          <_>
+            <feature>
+              <rects>
+                <_>
+                  0 0 24 8 -1.</_>
+                <_>
+                  0 0 12 4 2.</_>
+                <_>
+                  12 4 12 4 2.</_></rects>
+              <tilted>0</tilted></feature>
+            <threshold>0.0131502803415060</threshold>
+            <left_val>1.</left_val>
+            <right_val>-0.9999998211860657</right_val></_></_></trees>
+      <stage_threshold>1.</stage_threshold>
+      <parent>3</parent>
+      <next>-1</next></_></stages></harr_forbidrotate>
+</opencv_storage>

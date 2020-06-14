@@ -8,20 +8,16 @@
       <el-upload
         class="upload-demo"
         ref="upload"
-        action="https://"
+        action="https://drive-test-conqueror.herokuapp.com/api/signrecognition"
         list-type="picture"
-        :auto-upload="false"
+        name="signImg"
         :multiple="false"
         :limit="1"
+        :before-upload="beforeUploadHandler"
+        :on-success="successHandler"
       >
         <div>
-          <el-button slot="trigger" size="small" type="primary">Select File</el-button>
-          <el-button
-            style="margin-left: 10px;"
-            size="small"
-            type="success"
-            @click="submitUpload"
-          >Upload</el-button>
+          <el-button slot="trigger" size="small" type="primary">Select File To Upload</el-button>
         </div>
         <div class="el-upload__tip" slot="tip">Only jpg/png format is acceptable.</div>
       </el-upload>
@@ -29,13 +25,7 @@
     <div class="result-container" v-if="hasResult">
       <span class="result-title">Possible Results</span>
       <div class="resut-cards-wrap">
-        <ResultCard name="當心行人" />
-        <ResultCard name="當心行人" />
-        <ResultCard name="當心行人" />
-        <ResultCard name="當心行人" />
-        <ResultCard name="當心行人" />
-        <ResultCard name="當心行人" />
-        <ResultCard name="當心行人" />
+        <ResultCard v-for="(item, index) in result" :key="index" :name="item.name" :img="item.img" />
         <div class="space" />
         <div class="space" />
         <div class="space" />
@@ -56,12 +46,34 @@ export default {
   },
   data: function() {
     return {
-      hasResult: true
+      hasResult: false,
+      proccessing: false,
+      result: []
     };
   },
   methods: {
-    submitUpload: function() {
-      this.$refs.upload.submit();
+    beforeUploadHandler: function(file) {
+      const isValid =
+        file.type === "image/jpeg" ||
+        file.type === "image/jpg" ||
+        file.type === "image/png";
+      if (!isValid) {
+        this.$message.error("Invalid file format");
+      }
+      return isValid;
+    },
+    successHandler: function(response) {
+      this.result = []
+      response.forEach(item => {
+        if (item.img) {
+          this.result.push({
+            name: item.name,
+            img: "data:image/png;base64," + item.img
+          });
+        }
+      });
+      // setTimeout(() => this.$refs.upload.clearFiles(), 1500);
+      this.hasResult = true;
     }
   }
 };

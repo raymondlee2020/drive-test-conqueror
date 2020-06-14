@@ -31,6 +31,7 @@ router.register(r'rulemultiplechoice', views.RuleMultipleChoiceViewSet)
 
 urlpatterns = [
     path('admin', admin.site.urls),
+    path('api/signrecognition', views.SignRecognitionHandler),
     path('api/', include(router.urls)),
     # Get builded files by django.views.static
     url(r'^media/(?P<path>.*)$', serve, {"document_root": DIST_DIR}),
