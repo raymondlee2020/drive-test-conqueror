@@ -25,7 +25,11 @@ def SignRecognitionHandler(request):
 
     mapName = {
         "haar_turnRight": "道路遵循方向(僅准右轉)",
-        "haar_forbidRotate": "禁止迴轉"
+        "haar_forbidLeft": "禁止左轉",
+        "haar_keepRight": "靠右行駛",
+        "haar_stop": "禁止通行",
+        "haar_straight": "僅准直行",
+        "haar_twiceTurnLeft": "二段式左轉"
     }
 
     def detect(img, haar, result):
@@ -41,7 +45,7 @@ def SignRecognitionHandler(request):
                 cv2.rectangle(img,
                               (x, y), (x+w, y+h),
                               (0, 0, 255), 2)
-            
+
             retval, buffer = cv2.imencode('.jpg', img)
             pic_str = base64.b64encode(buffer)
             pic_str = pic_str.decode()
@@ -56,13 +60,14 @@ def SignRecognitionHandler(request):
 
         img = np.asarray(bytearray(data), dtype="uint8")
         img = cv2.imdecode(img, cv2.IMREAD_COLOR)
-        
+
         result = []
         threads = []
 
         for classifier in mapName.keys():
-            threads.append(threading.Thread(target=detect, args=(img.copy(), classifier, result)))
-        
+            threads.append(threading.Thread(
+                target=detect, args=(img.copy(), classifier, result)))
+
         for i in range(len(threads)):
             threads[i].start()
 

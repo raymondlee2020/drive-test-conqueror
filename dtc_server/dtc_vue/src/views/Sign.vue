@@ -30,6 +30,7 @@
         <div class="space" />
         <div class="space" />
       </div>
+      <div class="no-result" v-if="result.length === 0">No Matched Sign</div>
     </div>
   </div>
 </template>
@@ -53,6 +54,7 @@ export default {
   },
   methods: {
     beforeUploadHandler: function(file) {
+      this.hasResult = false
       const isValid =
         file.type === "image/jpeg" ||
         file.type === "image/jpg" ||
@@ -124,6 +126,12 @@ export default {
       .space {
         width: 25%;
       }
+    }
+    .no-result {
+      width: 100%;
+      font-size: $pc-md;
+      display: flex;
+      justify-content: center;
     }
   }
 }
