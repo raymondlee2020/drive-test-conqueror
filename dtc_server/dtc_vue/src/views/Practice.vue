@@ -62,6 +62,7 @@ export default {
       this.testing = true;
       this.shuffle(this.trueFalse);
       this.shuffle(this.multipleChoice);
+      console.log(this.trueFalse);
       this.quizs = [];
       if (this.trueFalse.length < 25) {
         this.quizs = this.quizs.concat(
@@ -78,7 +79,7 @@ export default {
         );
       } else {
         this.quizs = this.quizs.concat(
-          this.trueFalse.slice(24).map((item, index) => {
+          this.trueFalse.slice(0, 25).map((item, index) => {
             return {
               quiz: `${index + 1}. ${item.quiz}`,
               options: item.options,
@@ -105,7 +106,7 @@ export default {
         );
       } else {
         this.quizs = this.quizs.concat(
-          this.multipleChoice.slice(24).map((item, index) => {
+          this.multipleChoice.slice(0, 25).map((item, index) => {
             return {
               quiz: `${index + 26}. ${item.quiz}`,
               options: item.options,
